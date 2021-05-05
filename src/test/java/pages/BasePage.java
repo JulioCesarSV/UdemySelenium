@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -113,5 +114,9 @@ public class BasePage {
 
     public boolean elementIsEnabled(String locator) {
         return Find(locator).isEnabled();
+    }
+
+    public List<WebElement> bringMeAllElements(String locator) {
+        return driver.findElements(By.className(locator));
     }
 }
