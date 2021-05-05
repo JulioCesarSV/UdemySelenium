@@ -28,6 +28,6 @@ public class GoogleSteps {
 
     @Then("^the results match the criteria$")
     public void validateResults() {
-        Assert.assertEquals("Amazon",google.firstResult());
+        Assert.assertEquals("Google",google.firstResult());
     }
 }
