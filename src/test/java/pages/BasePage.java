@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -96,5 +97,21 @@ public class BasePage {
 
     public void dismissAlert(){
         driver.switchTo().alert().dismiss();
+    }
+
+    public String textFromElement(String locator) {
+        return Find(locator).getText();
+    }
+
+    public boolean elementIsDisplayed(String locator) {
+        return Find(locator).isDisplayed();
+    }
+
+    public boolean elementIsSelected(String locator) {
+        return Find(locator).isSelected();
+    }
+
+    public boolean elementIsEnabled(String locator) {
+        return Find(locator).isEnabled();
     }
 }
