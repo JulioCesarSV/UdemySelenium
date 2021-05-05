@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -85,4 +86,15 @@ public class BasePage {
         Find(cellToFill).sendKeys(stringToSend);
     }
 
+    public void switchToiFrame(int iFrameIndex){
+        driver.switchTo().frame(iFrameIndex);
+    }
+
+    public void switchTParentFrame(){
+        driver.switchTo().parentFrame();
+    }
+
+    public void dismissAlert(){
+        driver.switchTo().alert().dismiss();
+    }
 }
