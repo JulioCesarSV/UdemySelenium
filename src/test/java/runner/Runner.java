@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "steps"
+        glue = "steps",
+        tags = "@Test"
 )
 public class Runner {
 
