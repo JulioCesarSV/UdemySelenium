@@ -17,9 +17,14 @@ dependencies {
     implementation group: 'io.cucumber', name: 'cucumber-java', version: '6.10.3'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '6.10.3'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '4.2.0'
+    testImplementation 'io.cucumber:cucumber-junit:4.2.0'
+    compile group: 'com.aventstack', name: 'extentreports-cucumber4-adapter', version: '1.0.7'
+
 
 }
 
 test {
     useJUnitPlatform()
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
 }

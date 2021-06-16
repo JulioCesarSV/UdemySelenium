@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ListPage extends BasePage{
     private String searchField = "//body/form[1]/input[1]";
@@ -18,9 +19,15 @@ public class ListPage extends BasePage{
         navigateTo("https://andreidbr.github.io/JS30/06AjaxTypeAhead/index.html");
     }
 
-    public void enterSearchCriteria() throws InterruptedException {
-        Thread.sleep(600);
-        write(searchField,"Washington");
+    public void enterSearchCriteria(String state) throws InterruptedException {
+        try {
+            Thread.sleep(600);
+            write(searchField,state);
+        } catch (NoSuchElementException e) {
+            System.out.println("The Web element Search fields couldn't be found.");
+            e.printStackTrace();
+        }
+
     }
 
     public List<String> getAllSearchResults(){

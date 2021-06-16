@@ -1,9 +1,7 @@
 package pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -31,11 +29,16 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         BasePage.driver = driver;
+        driver.manage().window().maximize();
         wait = new WebDriverWait(driver,10);
     }
 
     public static void navigateTo(String url){
         driver.get(url);
+    }
+
+    public static void closeBrowser(){
+        driver.quit();
     }
 
     private WebElement Find(String locator) {
@@ -49,6 +52,12 @@ public class BasePage {
     public void write(String locator, String textToWrite) {
         Find(locator).clear();
         Find(locator).sendKeys(textToWrite);
+    }
+    public void enter(String locator) {
+        Find(locator).sendKeys(Keys.ENTER);
+    }
+    public void tab(String locator) {
+        Find(locator).sendKeys(Keys.TAB);
     }
 
     public void selectFromDropDownByValue(String locator, String valueToSelect) {
@@ -97,7 +106,12 @@ public class BasePage {
     }
 
     public void dismissAlert(){
-        driver.switchTo().alert().dismiss();
+        try {
+            driver.switchTo().alert().dismiss();
+        } catch (NoAlertPresentException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public String textFromElement(String locator) {
